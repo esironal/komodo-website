@@ -32,12 +32,16 @@
 ## Installation
 
 1. from the root of the Komodo-website repo; `vagrant up`
-  * Starts an Ubuntu VM and provisions it based on our puppet configuration
+  * This will install git and allow the VM to have an IP routable in your internal
+  DNS (ie. 192.168.x.x).
 
 2. when provisioning completes and the VM is running; `vagrant ssh`
   * SSH into the VM as the `vagrant` user and dropped in a shell terminal
 
 3. `cd /vagrant`
+
+4. Rsync the contents of this folder to the vagrant users home folder using this command"
+    `*vagrant@komodo:/vagrant$ rsync -vr --exclude .git --exclude puppet --exclude out --exclude .vagrant . ~`
 
 4. `ip addr show eth1 | grep inet | awk '{ print $2 }' | awk -F "/" '{print $1}'`
   * output the IP of network interface eth1 to use in step 7.
@@ -52,7 +56,7 @@ retrieved in step 4:
   * on Windows you can find your `hosts` file under `C:\Windows\System32\drivers\etc`, on mac/linux it is under `/etc/hosts`
   * on windows it is best to edit it using Notepad opened "as administrator"
 
-*You can now hit __dev.komodoide.com:9778__ in your browser and view the Komodo Website*
+*You can now hit http://dev.komodoide.com:9778/ in your browser and view the Komodo Website*
 
 ## Management
 
@@ -94,7 +98,7 @@ and is linked directly to the `/vagrant` folder inside the VM.
 
 Run the docpad server: `docpad run`
 
-Access your dev enviroment using: http://dev.komodoide.com/
+Access your dev enviroment using: http://dev.komodoide.com:9778/
 
 If you are accessing your dev environment from an external
 machine you will need to set up dev.komodoide.com in your hosts file.

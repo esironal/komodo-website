@@ -9,7 +9,7 @@
 #content
 {
     padding: 25px 0;
-
+    
     &:not(.no-grid)
     {
         @include outer-container;
@@ -315,5 +315,13 @@ aside
     {
         position: absolute;
         right: 0;
+    }
+}
+
+@include media(new-breakpoint(max-width 1279px))
+{
+    .at4-share-outer
+    {
+        display: none;
     }
 }
